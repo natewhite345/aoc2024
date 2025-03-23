@@ -10,6 +10,8 @@ private abbrev pd := pair_distance
 #guard pd 2 1 = 1
 #guard pd 3 1 = 2
 
+#check True
+
 private theorem pair_distance_comm : ∀ a b : Nat, pair_distance a b = pair_distance b a := by
   intro a b
   rw [pair_distance, pair_distance]
