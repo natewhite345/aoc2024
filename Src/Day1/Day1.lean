@@ -10,8 +10,6 @@ private abbrev pd := pair_distance
 #guard pd 2 1 = 1
 #guard pd 3 1 = 2
 
-#check True
-
 private theorem pair_distance_comm : ∀ a b : Nat, pair_distance a b = pair_distance b a := by
   intro a b
   rw [pair_distance, pair_distance]
@@ -94,9 +92,11 @@ private theorem perm_unique_sort(l1 l2 : List Nat)(p: l1.Perm l2): l1.mergeSort 
     exact Nat.eq_iff_le_and_ge.mpr ⟨h1, h2⟩
   have c2 : l1'.Pairwise (. ≤ .) := by
     have := List.sorted_mergeSort le_trans le_total l1
+    simp [l1']
     simp_all
   have c3 : l2'.Pairwise (. ≤ .) := by
     have := List.sorted_mergeSort le_trans le_total l2
+    simp [l2']
     simp_all
   have c4 : l1'.Perm l2' := by
     have l1p: l1'.Perm l1 := List.mergeSort_perm l1 (. ≤ .)
